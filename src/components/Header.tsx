@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <header className="sticky left-0 top-0 flex flex-row h-auto md:h-16 w-full items-center justify-between bg-white px-4 shadow-md z-50">
       <h1 className="text-xl font-bold text-primary-dark mb-2 md:mb-0">
-        <Link to="/">Travel Article</Link>
+        <Link to="/">Travel Article App</Link>
       </h1>
       <div className="hidden md:flex flex-row items-center gap-5 md:gap-20">
         {isAuthenticated && <h1 className="text-primary-dark hover:text-secondary hover:underline">

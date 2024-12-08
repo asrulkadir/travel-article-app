@@ -26,3 +26,13 @@ jobs:
       run: docker build -t asrulkadir/travel-article-app:latest .  --platform=linux/amd64
     - name: Push the Docker image
       run: docker push asrulkadir/travel-article-app:latest
+    - name: Deploy to VPS
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.VPS_PORT }}
+        script: |
+          cd ~/travel-article-app
+          docker compose up -d
