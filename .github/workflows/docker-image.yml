@@ -14,6 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Create .env file
+      run: |
+        echo "VITE_URL_API=${{ secrets.VITE_URL_API }}" >> .env
     - name: Login to docker hub
       uses: docker/login-action@v3
       with:
