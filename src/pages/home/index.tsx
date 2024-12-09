@@ -89,7 +89,7 @@ const Home = () => {
     <Layout>
       <div className='p-2 lg:p-5'>
         <div
-          className='flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 sticky top-8 md:top-16 lg:top-12 p-2 lg:p-5'
+          className='flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 sticky z-40 top-8 md:top-16 lg:top-12 p-2 lg:p-5'
         >
           {isAuthenticated && 
             <Button
