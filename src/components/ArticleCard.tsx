@@ -11,6 +11,8 @@ import { ICommentPayload } from '../redux/comment/types';
 import { getCommentsParamsByArticle } from '../utils/helpers';
 import ModalArticle from './ModalArticle';
 import { IAuthData } from '../redux/auth/types';
+import { SlOptionsVertical } from 'react-icons/sl';
+import { IoCloseSharp } from 'react-icons/io5';
 
 interface ArticleCardProps {
   article: IArticle;
@@ -103,7 +105,9 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, isAuthenticated, aut
                 onClick={() => toggleDropdown(article.documentId)}
                 className="hover:bg-gray-100 p-2 rounded-full"
               >
-                &#x22EE;
+                {
+                  dropdownVisible !== article.documentId ? <SlOptionsVertical /> : <IoCloseSharp />
+                }
               </button>
               {dropdownVisible === article.documentId && (
                 <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg">
