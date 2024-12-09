@@ -16,9 +16,14 @@ export interface ICategoryData {
   meta: IMeta;
 }
 
+export interface ICategoryDataDetail {
+  data : ICategory;
+  meta?: IMeta;
+}
+
 export interface ICategoryState {
   categories: ICategoryData;
-  category:  ICategory;
+  category:  ICategoryDataDetail;
   loading:  boolean;
   error:    string | null;
 }

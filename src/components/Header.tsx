@@ -37,7 +37,7 @@ const Header = () => {
         {authData.jwt && (
           <h1
             className="text-primary-dark hover:text-secondary hover:underline cursor-pointer"
-            onClick={() => dispatch(logoutReq())}
+            onClick={() => void dispatch(logoutReq())}
           >
             Logout
           </h1>
@@ -75,7 +75,7 @@ const Header = () => {
                 <h1
                   className="text-primary-dark hover:text-secondary hover:underline cursor-pointer"
                   onClick={() => {
-                    dispatch(logoutReq());
+                    void dispatch(logoutReq());
                     togglePopup();
                   }}
                 >

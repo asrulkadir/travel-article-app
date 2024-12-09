@@ -1,13 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginReq, logoutReq, registerReq } from "./action";
-import { IAuthState } from "./types";
+import { IAuthState, IUser } from "./types";
 import Cookies from "js-cookie";
-// import { Dispatch } from "redux";
 
 const initialState: IAuthState = {
   authData: {
-    jwt: Cookies.get("auth-test") || "",
-    user: JSON.parse(localStorage.getItem("user") || "{}")
+    jwt: Cookies.get("auth-test") ?? "",
+    user: JSON.parse(localStorage.getItem("user") ?? "{}") as IUser
   },
   loading: false,
   error: null
@@ -31,7 +30,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(loginReq.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     //  register request
@@ -48,7 +47,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(registerReq.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     //  logout request

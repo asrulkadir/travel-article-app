@@ -1,7 +1,7 @@
 import Chart from 'react-apexcharts';
 
 interface PieChartProps {
-  data: { [key: string]: number };
+  data: Record<string, number>;
   titleChart: string;
 }
 

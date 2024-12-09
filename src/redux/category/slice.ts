@@ -16,14 +16,16 @@ const initialState: ICategoryState = {
     }
   },
   category: {
-    id: 0,
-    documentId: "",
-    name: "",
-    description: "",
-    createdAt: "",
-    updatedAt: "",
-    publishedAt: "",
-    locale: null
+    data: {
+      id: 0,
+      documentId: "",
+      name: "",
+      description: "",
+      createdAt: "",
+      updatedAt: "",
+      publishedAt: "",
+      locale: null
+    }
   },
   loading: false,
   error: null
@@ -45,7 +47,7 @@ export const categorySlice = createSlice({
     });
     builder.addCase(getCategories.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     // get category
@@ -59,12 +61,11 @@ export const categorySlice = createSlice({
     });
     builder.addCase(getCategory.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     // create category
-    builder.addCase(createCategory.fulfilled, (state, action) => {
-      state.categories.data.push(action.payload);
+    builder.addCase(createCategory.fulfilled, (state) => {
       state.loading = false;
       state.error = null;
     });
@@ -73,7 +74,7 @@ export const categorySlice = createSlice({
     });
     builder.addCase(createCategory.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     // update category
@@ -86,7 +87,7 @@ export const categorySlice = createSlice({
     });
     builder.addCase(updateCategory.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     // delete category
@@ -99,7 +100,7 @@ export const categorySlice = createSlice({
     });
     builder.addCase(deleteCategory.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
   }
 });

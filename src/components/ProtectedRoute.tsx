@@ -11,7 +11,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ isAuthenticated, childr
 
   useEffect(() => {
     if (!isAuthenticated) {
-      navigate('/login');
+      void navigate('/login');
     }
   }, [isAuthenticated, navigate]);
   

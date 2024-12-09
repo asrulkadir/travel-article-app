@@ -15,25 +15,27 @@ const initialState: ICommentState = {
     }
   },
   comment: {
-    id: 0,
-    documentId: "",
-    content: "",
-    createdAt: "",
-    updatedAt: "",
-    publishedAt: "",
-    locale: null,
-    user: {
+    data: {
       id: 0,
       documentId: "",
-      username: "",
-      email: "",
-      provider: "",
-      confirmed: false,
-      blocked: false,
+      content: "",
       createdAt: "",
       updatedAt: "",
       publishedAt: "",
-      locale: null
+      locale: null,
+      user: {
+        id: 0,
+        documentId: "",
+        username: "",
+        email: "",
+        provider: "",
+        confirmed: false,
+        blocked: false,
+        createdAt: "",
+        updatedAt: "",
+        publishedAt: "",
+        locale: null
+      }
     }
   },
   loading: false,
@@ -57,7 +59,7 @@ export const commentSlice = createSlice({
     });
     builder.addCase(getComments.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     // get comment
@@ -71,12 +73,11 @@ export const commentSlice = createSlice({
     });
     builder.addCase(getComment.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     // create comment
-    builder.addCase(createComment.fulfilled, (state, action) => {
-      state.comments.data.push(action.payload);
+    builder.addCase(createComment.fulfilled, (state) => {
       state.loading = false;
       state.error = null;
     });
@@ -85,7 +86,7 @@ export const commentSlice = createSlice({
     });
     builder.addCase(createComment.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     // update comment
@@ -98,7 +99,7 @@ export const commentSlice = createSlice({
     });
     builder.addCase(updateComment.rejected, (state, action) => {
       state.loadingUpdate = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     // delete comment
@@ -111,7 +112,7 @@ export const commentSlice = createSlice({
     });
     builder.addCase(deleteComment.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
   }
 });

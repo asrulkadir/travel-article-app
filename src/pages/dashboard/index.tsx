@@ -12,7 +12,7 @@ const DashboardPage = () => {
   const { articles } = useSelector((state: RootState) => state.articles);
 
   useEffect(() => {
-    dispatch(fetchArticles('populate=*'));
+    void dispatch(fetchArticles('populate=*'));
   }, [dispatch]);
 
   // Extract data for charts
@@ -21,7 +21,7 @@ const DashboardPage = () => {
   const titles = articles.data.map(item => item.title);
   
   // Calculate category counts
-  const categoryCounts = categories.reduce((acc: { [key: string]: number }, category) => {
+  const categoryCounts = categories.reduce((acc: Record<string, number>, category) => {
     acc[category] = (acc[category] || 0) + 1;
     return acc;
   }, {});

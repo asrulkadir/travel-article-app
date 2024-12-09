@@ -12,7 +12,7 @@ const ErrorFallback = () => (
   </div>
 );
 
-const ErrorBoundary: React.FC<Props> = ({ children }) => {
+const ErrorBoundary = ({ children }: Props) => {
   return (
     <ReactErrorBoundary FallbackComponent={ErrorFallback}>
       {children}

@@ -16,7 +16,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (authData.user.id) {
-      dispatch(getComments(getCommentsParamsByUsers(authData.user.id, page)));
+      void dispatch(getComments(getCommentsParamsByUsers(authData.user.id, page)));
     }
   }, [dispatch, authData.user.id, page]);
 

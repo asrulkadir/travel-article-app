@@ -16,9 +16,9 @@ const RegisterPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await dispatch(registerReq({ email, username, password }));
-    if (!loading && !error) {
-      navigate("/login");
+    const res = await dispatch(registerReq({ email, username, password }));
+    if (res.meta.requestStatus === 'fulfilled') {
+      void navigate("/login");
     }
   };
 
@@ -26,7 +26,7 @@ const RegisterPage = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-4 bg-white rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-center text-gray-800">Register Travel Article App</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={(e) => void handleSubmit(e)} className="space-y-4">
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email

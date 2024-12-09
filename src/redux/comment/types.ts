@@ -19,9 +19,14 @@ export interface ICommentData {
   meta: IMeta;
 }
 
+export interface ICommentDataDetail {
+  data : IComment;
+  meta?: IMeta;
+}
+
 export interface ICommentState {
   comments: ICommentData;
-  comment:  IComment;
+  comment:  ICommentDataDetail;
   loading:  boolean;
   error:    string | null;
   loadingUpdate: boolean;

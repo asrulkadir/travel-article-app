@@ -17,7 +17,7 @@ const CategoryPage = () => {
   const { register, handleSubmit, reset } = useForm<ICategoryPayload>();
 
   useEffect(() => {
-    dispatch(getCategories());
+    void dispatch(getCategories());
   }, [dispatch]);
 
   const handleEdit = (category: ICategoryPayload) => {
@@ -28,7 +28,7 @@ const CategoryPage = () => {
 
   const handleDelete = (id: string) => {
     if (confirm('Are you sure want to delete this category?')) {
-      dispatch(deleteCategory(id));
+      void dispatch(deleteCategory(id));
     }
   };
 
@@ -90,7 +90,7 @@ const CategoryPage = () => {
                         onClick={() => handleEdit({
                           documentId: category.documentId,
                           name: category.name,
-                          description: category.description || ''
+                          description: category.description ?? ''
                         })}
                         className="bg-blue-500 text-white py-1 px-2 rounded"
                       >
@@ -114,13 +114,14 @@ const CategoryPage = () => {
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-white p-6 rounded shadow-lg w-96">
               <h2 className="text-xl font-bold mb-4">{modalType === 'add' ? 'Add Category' : 'Edit Category'}</h2>
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={(e) => void handleSubmit(onSubmit)(e)}>
                 <div className="mb-4">
                   <label className="block text-gray-700">Name</label>
                   <input
                     type="text"
                     {...register('name')}
                     className="w-full px-3 py-2 border rounded"
+                    placeholder="Category name"
                   />
                 </div>
                 <div className="mb-4">
@@ -129,6 +130,7 @@ const CategoryPage = () => {
                     type="text"
                     {...register('description')}
                     className="w-full px-3 py-2 border rounded"
+                    placeholder="Category description"
                   />
                 </div>
                 {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}

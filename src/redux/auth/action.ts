@@ -30,7 +30,7 @@ export const registerReq = createAsyncThunk<IAuthData | undefined, IRegisterPayl
   }
 );
 
-export const logoutReq = createAsyncThunk("auth/logoutReq", async () => {
+export const logoutReq = createAsyncThunk("auth/logoutReq", () => {
   try {
     Cookies.remove("auth-test");
     localStorage.removeItem("user");

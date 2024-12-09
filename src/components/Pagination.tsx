@@ -7,7 +7,7 @@ interface PaginationProps {
   className?: string;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange, className = '' }) => {
+const Pagination= ({ currentPage, totalPages, onPageChange, className = '' }: PaginationProps ) => {
   const handlePrevious = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);

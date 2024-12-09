@@ -28,7 +28,7 @@ const Home = () => {
   const [initialArticle, setInitialArticle] = useState<IArticle>();
 
   useEffect(() => {
-    dispatch(fetchArticles(getNewsParams('', page)));
+    void dispatch(fetchArticles(getNewsParams('', page)));
   }, [dispatch, page]);
 
   useEffect(() => {
@@ -61,13 +61,13 @@ const Home = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setPage(1); // Reset to first page on new search
-    dispatch(fetchArticles(getNewsParams(search, 1)));
+    void dispatch(fetchArticles(getNewsParams(search, 1)));
   }
 
   const handleClear = () => {
     setSearch('');
     setPage(1); // Reset to first page on clear
-    dispatch(fetchArticles(getNewsParams('', 1)));
+    void dispatch(fetchArticles(getNewsParams('', 1)));
   }
 
   const handleSave = async (data: IArticlePayload): Promise<void> => {

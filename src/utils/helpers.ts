@@ -1,6 +1,6 @@
 import qs from 'qs';
 
-export const getNewsParams = (search: string = '', page: number = 1) => {
+export const getNewsParams = (search = '', page = 1) => {
   const params = {
     populate: '*',
     sort: 'publishedAt:desc',
@@ -17,7 +17,7 @@ export const getNewsParams = (search: string = '', page: number = 1) => {
   return qs.stringify(params);
 };
 
-export const getCommentsParamsByArticle = (articleId: number | string, page: number = 1) => {
+export const getCommentsParamsByArticle = (articleId: number | string, page = 1) => {
   const params = {
     populate: {
       user: '*',
@@ -37,7 +37,7 @@ export const getCommentsParamsByArticle = (articleId: number | string, page: num
   return qs.stringify(params);
 };
 
-export const getCommentsParamsByUsers = (userdId: number | string, page: number = 1) => {
+export const getCommentsParamsByUsers = (userdId: number | string, page = 1) => {
   const params = {
     populate: {
       article: '*'

@@ -44,7 +44,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, isAuthenticated, aut
 
   const handleDelete = (id: string) => {
     if (confirm('Are you sure you want to delete this article?')) {
-      dispatch(deleteArticle(id));
+      void dispatch(deleteArticle(id));
     }
   }
 
@@ -61,7 +61,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, isAuthenticated, aut
       reset();
     } else if (res.meta.requestStatus === 'rejected') {
       if ('error' in res) {
-        alert(res.error?.message || 'An error occurred');
+        alert(res.error?.message ?? 'An error occurred');
       }
     }
   }
@@ -73,14 +73,14 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, isAuthenticated, aut
       editCommentForm.reset();
     } else if (res.meta.requestStatus === 'rejected') {
       if ('error' in res) {
-        alert(res.error?.message || 'An error occurred');
+        alert(res.error?.message ?? 'An error occurred');
       }
     }
   }
 
   const handleViewComments = (id: string | number) => {
     setShowCommentId(showCommentId === id ? '' : id);
-    dispatch(getComments(getCommentsParamsByArticle(id)));
+    void dispatch(getComments(getCommentsParamsByArticle(id)));
   }
 
   const handleDeleteComment = async (idComment: string, idArticle: number | string) => {
@@ -148,7 +148,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, isAuthenticated, aut
         showCommentId === article.id && (
           <div className='p-4'>
             {isAuthenticated && (
-              <form onSubmit={handleSubmitComment((data) => handleAddComment(data, article.id))} className='mb-4'>
+              <form onSubmit={(e) => void handleSubmitComment((data) => handleAddComment(data, article.id))(e)} className='mb-4'>
                 <textarea
                   className='w-full p-2 border rounded-lg'
                   placeholder='Add a comment...'
@@ -177,7 +177,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, isAuthenticated, aut
                     <p className='text-sm'>{comment?.content}</p>
                   </>
                 ) : (
-                  <form onSubmit={editCommentForm.handleSubmit((data) => handleEditComment(data, article.id))}>
+                  <form onSubmit={(e) => void editCommentForm.handleSubmit((data) => handleEditComment(data, article.id))(e)}>
                     <textarea
                       className='w-full p-2 border rounded-lg'
                       {
@@ -215,7 +215,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, isAuthenticated, aut
                     {' '}|{' '}
                     <span 
                       className='cursor-pointer text-red-500 hover:underline'
-                      onClick={() => handleDeleteComment(comment.documentId, article.id)}
+                      onClick={() => void handleDeleteComment(comment.documentId, article.id)}
                     >
                       delete
                     </span>

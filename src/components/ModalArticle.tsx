@@ -29,7 +29,7 @@ const ModalArticle: React.FC<ModalProps> = ({ isOpen, onClose, onSave, initialDa
 
   useEffect(() => {
     if (isOpen) {
-      dispatch(getCategories());
+      void dispatch(getCategories());
     }
   }, [dispatch, isOpen]);
 
@@ -65,7 +65,11 @@ const ModalArticle: React.FC<ModalProps> = ({ isOpen, onClose, onSave, initialDa
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-xl font-bold mb-4">{initialData ? 'Update Article' : 'Add Article'}</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form  
+          onSubmit={(e) =>
+            void handleSubmit(onSubmit)(e)
+          }
+        >
           <label className="block mt-4" htmlFor="title">
             Title
           </label>

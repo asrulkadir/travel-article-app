@@ -23,9 +23,14 @@ export interface IArticleData {
   meta: IMeta;
 }
 
+export interface IArticleDataDetail {
+  data : IArticle;
+  meta?: IMeta;
+}
+
 export interface IArticleState {
   articles: IArticleData;
-  article:  IArticle;
+  article:  IArticleDataDetail;
   loading:  boolean;
   error:    string | null;
 }

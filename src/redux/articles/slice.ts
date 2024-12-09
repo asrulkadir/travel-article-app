@@ -16,25 +16,28 @@ const initialState: IArticleState = {
     }
   },
   article: {
-    id: 0,
-    documentId: "",
-    title: "",
-    description: "",
-    cover_image_url: "",
-    createdAt: "",
-    updatedAt: "",
-    publishedAt: "",
-    locale: null,
-    comments: [],
-    category: {
+    data: {
+
       id: 0,
       documentId: "",
+      title: "",
       description: "",
-      name: "",
+      cover_image_url: "",
       createdAt: "",
       updatedAt: "",
       publishedAt: "",
-      locale: null
+      locale: null,
+      comments: [],
+      category: {
+        id: 0,
+        documentId: "",
+        description: "",
+        name: "",
+        createdAt: "",
+        updatedAt: "",
+        publishedAt: "",
+        locale: null
+      }
     }
   },
   loading: false,
@@ -57,7 +60,7 @@ export const articleSlice = createSlice({
     });
     builder.addCase(fetchArticles.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     // get article
@@ -71,7 +74,7 @@ export const articleSlice = createSlice({
     });
     builder.addCase(fetchArticle.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     //  create article
@@ -85,7 +88,7 @@ export const articleSlice = createSlice({
     });
     builder.addCase(createArticle.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     //  update article
@@ -98,7 +101,7 @@ export const articleSlice = createSlice({
     });
     builder.addCase(updateArticle.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
 
     //  delete article
@@ -111,7 +114,7 @@ export const articleSlice = createSlice({
     });
     builder.addCase(deleteArticle.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message || null;
+      state.error = action.error.message ?? null;
     });
   }
 });
