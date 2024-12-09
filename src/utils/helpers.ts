@@ -3,13 +3,14 @@ import qs from 'qs';
 export const getNewsParams = (search: string = '', page: number = 1) => {
   const params = {
     populate: '*',
+    sort: 'publishedAt:desc',
     pagination: {
       page: page,
       pageSize: 6
     },
     filters: search ? {
       title: {
-        $eqi: search
+        $containsi: search
       }
     } : undefined
   };
@@ -51,7 +52,8 @@ export const getCommentsParamsByUsers = (userdId: number | string, page: number 
           $eq: userdId
         }
       }
-    }
+    },
+    sort: 'publishedAt:desc'
   };
   return qs.stringify(params);
 }

@@ -28,8 +28,8 @@ const Home = () => {
   const [initialArticle, setInitialArticle] = useState<IArticle>();
 
   useEffect(() => {
-    dispatch(fetchArticles(getNewsParams(search, page)));
-  }, [dispatch, search, page]);
+    dispatch(fetchArticles(getNewsParams('', page)));
+  }, [dispatch, page]);
 
   useEffect(() => {
     if (page === 1) {
