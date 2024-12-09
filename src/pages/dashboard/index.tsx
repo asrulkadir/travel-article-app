@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { fetchArticles } from "../../redux/articles/action";
 import { useEffect } from "react";
-import Header from "../../components/Header";
 import BarChart from "../../components/Charts/Barchart";
 import PieChart from "../../components/Charts/Piechart";
 import CardDasboard from "../../components/CardDashboard";
+import Layout from "../../components/Layout";
 
 const DashboardPage = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -27,8 +27,7 @@ const DashboardPage = () => {
   }, {});
 
   return (
-    <>
-      <Header />
+    <Layout>
       <div className="container mx-auto">
         <h1
           className="text-2xl font-bold text-primary-dark text-center my-4"
@@ -68,7 +67,7 @@ const DashboardPage = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   )
 }
 
