@@ -16,9 +16,10 @@ Make sure you have the latest version of [Node.js](https://nodejs.org/) installe
     ```
 
 2. Add env file
+   
     create .env file from .env.example and fill the value
 
-3. Install dependencies:
+4. Install dependencies:
 
     ```sh
     npm install
