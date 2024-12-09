@@ -74,7 +74,7 @@ export const updateArticle = createAsyncThunk<IArticleDataDetail, { article: Par
       coverImageUrl = await uploadImage(article.image[0]);
     }
 
-    const response = await axiosApp.put<IArticleDataDetail>(`${id}`, {
+    const response = await axiosApp.put<IArticleDataDetail>(`articles/${id}`, {
       data: {
         title: article.title,
         description: article.description,

@@ -60,7 +60,7 @@ export const articleSlice = createSlice({
     });
     builder.addCase(fetchArticles.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message ?? null;
+      state.error = action.error.message ?? 'An error occurred';
     });
 
     // get article
@@ -74,7 +74,7 @@ export const articleSlice = createSlice({
     });
     builder.addCase(fetchArticle.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message ?? null;
+      state.error = action.error.message ?? 'An error occurred';
     });
 
     //  create article
@@ -88,7 +88,7 @@ export const articleSlice = createSlice({
     });
     builder.addCase(createArticle.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message ?? null;
+      state.error = action.error.message ?? 'An error occurred';
     });
 
     //  update article
@@ -101,7 +101,7 @@ export const articleSlice = createSlice({
     });
     builder.addCase(updateArticle.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message ?? null;
+      state.error = action?.error?.message ?? 'An error occurred';
     });
 
     //  delete article
@@ -114,7 +114,7 @@ export const articleSlice = createSlice({
     });
     builder.addCase(deleteArticle.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message ?? null;
+      state.error = action.error.message ?? 'An error occurred';
     });
   }
 });

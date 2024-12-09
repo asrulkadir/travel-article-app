@@ -139,6 +139,7 @@ const CategoryPage = () => {
                     type="button"
                     onClick={() => setIsModalOpen(false)}
                     className="bg-gray-500 text-white py-2 px-4 rounded"
+                    disabled={loading}
                   >
                   Cancel
                   </button>

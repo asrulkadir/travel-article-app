@@ -30,7 +30,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(loginReq.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message ?? null;
+      state.error = action.error.message ?? 'An error occurred';
     });
 
     //  register request
@@ -47,7 +47,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(registerReq.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message ?? null;
+      state.error = action.error.message ?? 'An error occurred';
     });
 
     //  logout request

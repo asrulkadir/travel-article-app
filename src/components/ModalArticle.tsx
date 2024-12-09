@@ -117,7 +117,12 @@ const ModalArticle: React.FC<ModalProps> = ({ isOpen, onClose, onSave, initialDa
             )
           }
           <div className="flex justify-end mt-4 gap-2">
-            <button type="button" onClick={onClose} className="bg-gray-500 text-white px-4 py-2 rounded-md">
+            <button 
+              type="button" 
+              onClick={onClose} 
+              className="bg-gray-500 text-white px-4 py-2 rounded-md"
+              disabled={loading}
+            >
               Cancel
             </button>
             <Button

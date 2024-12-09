@@ -26,7 +26,7 @@ axiosApp.interceptors.request.use(
 export const handleAxiosError = (error: unknown): never => {
   if (axios.isAxiosError(error)) {
     const axiosError = error as AxiosError<{ error: { message: string } }>;
-    throw new Error(axiosError.response?.data.error.message ?? "An unexpected error occurred");
+    throw new Error(axiosError.response?.data?.error?.message ?? "An unexpected error occurred");
   } else {
     throw new Error("An unexpected error occurred");
   }

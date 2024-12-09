@@ -47,7 +47,7 @@ export const categorySlice = createSlice({
     });
     builder.addCase(getCategories.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message ?? null;
+      state.error = action.error.message ?? 'An error occurred';
     });
 
     // get category
@@ -61,7 +61,7 @@ export const categorySlice = createSlice({
     });
     builder.addCase(getCategory.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message ?? null;
+      state.error = action.error.message ?? 'An error occurred';
     });
 
     // create category
@@ -74,7 +74,7 @@ export const categorySlice = createSlice({
     });
     builder.addCase(createCategory.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message ?? null;
+      state.error = action.error.message ?? 'An error occurred';
     });
 
     // update category
@@ -87,7 +87,7 @@ export const categorySlice = createSlice({
     });
     builder.addCase(updateCategory.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message ?? null;
+      state.error = action.error.message ?? 'An error occurred';
     });
 
     // delete category
@@ -100,7 +100,7 @@ export const categorySlice = createSlice({
     });
     builder.addCase(deleteCategory.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message ?? null;
+      state.error = action.error.message ?? 'An error occurred';
     });
   }
 });
