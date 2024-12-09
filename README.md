@@ -1,50 +1,48 @@
-# React + TypeScript + Vite
+# Travel Article App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This application uses React, TypeScript, and Vite to provide a minimal setup with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Make sure you have the latest version of [Node.js](https://nodejs.org/) installed.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone this repository:
 
-- Configure the top-level `parserOptions` property like this:
+    ```sh
+    git clone https://github.com/asrulkadir/travel-article-app.git
+    cd travel-article-app
+    ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+2. Install dependencies:
+
+    ```sh
+    npm install
+    ```
+
+## Running the Application
+
+To run the application in development mode:
+
+```sh
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Building the Application
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+To build the application for production:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```sh
+npm run build
+```
+
+The build output will be in the `dist` folder.
+
+## Running the Build Preview
+
+To run a preview of the build:
+
+```sh
+npm run preview
 ```
